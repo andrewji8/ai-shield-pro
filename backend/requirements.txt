@@ -1,0 +1,8 @@
+fastapi==0.141.1
+uvicorn==0.53.0
+pydantic==2.13.5
+scikit-learn==1.9.1
+pefile==2024.8.26
+python-multipart==0.0.32
+numpy==2.4.6
+alembic

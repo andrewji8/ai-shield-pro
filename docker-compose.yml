@@ -1,0 +1,58 @@
+services:
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    # ✅ 核心修复：使用 python -m 确保 alembic 必定能被找到
+    command: >
+      sh -c "python -m alembic upgrade head && 
+             gunicorn main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000"
+    volumes:
+      - upload_data:/app/uploads
+      - quarantine_data:/app/quarantine
+    networks:
+      - shield-network
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: shield_user
+      POSTGRES_PASSWORD: shield_password
+      POSTGRES_DB: shield_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U shield_user -d shield_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - shield-network
+
+  redis:
+    image: redis:7-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - shield-network
+
+volumes:
+  pgdata:
+  upload_data:
+  quarantine_data:
+
+networks:
+  shield-network:
+    driver: bridge
