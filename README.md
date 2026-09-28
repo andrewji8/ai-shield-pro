@@ -1,91 +1,5 @@
-恭喜您的项目达到了生产级标准！将这样优秀的项目开源或展示在 GitHub 上是非常棒的决定。
-
-以下是为您准备的 **GitHub 上传指南** 以及 **专业的中英文双语项目介绍（README 模板）**。
-
----
-
-### 🚀 第一部分：如何将项目上传到 GitHub (5 步搞定)
-
-请确保您的电脑已安装 [Git](https://git-scm.com/)。在 PowerShell 中按顺序执行以下步骤：
-
-#### Step 1: 配置 Git 身份 (如果首次使用)
-```powershell
-git config --global user.name "Your GitHub Name"
-git config --global user.email "your-email@example.com"
-```
-
-#### Step 2: 创建 `.gitignore` 文件 (⚠️ 极其重要：防止泄露密码和上传垃圾文件)
-在项目根目录 `D:\aistudypython\ai-shield-pro\` 下，新建一个名为 `.gitignore` 的文件，粘贴以下内容：
-```text
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-.venv/
-venv/
-env/
-*.db
-shield.db
-
-# Node / Frontend
-node_modules/
-dist/
-build/
-*.local
-
-# Environment Variables (绝对不要上传!)
-.env
-.env.local
-.env.*.local
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
-```
-
-#### Step 3: 在 GitHub 上创建新仓库
-1. 登录 [GitHub](https://github.com/)。
-2. 点击右上角 **"+"** -> **New repository**。
-3. Repository name 填入：`ai-shield-pro`。
-4. 保持 **Public** (公开) 或 **Private** (私有)，**不要**勾选 "Add a README file" (因为我们马上要自己创建一个更好的)。
-5. 点击 **Create repository**。
-
-#### Step 4: 本地初始化并推送代码
-复制 GitHub 创建页面提供的命令，或在 PowerShell 中依次执行：
-```powershell
-cd D:\aistudypython\ai-shield-pro
-
-# 1. 初始化 Git 仓库
-git init
-
-# 2. 添加所有文件 (受 .gitignore 保护，不会上传敏感文件)
-git add .
-
-# 3. 提交代码
-git commit -m "feat: Initial commit of production-ready AI Shield Pro (Async FastAPI + React + Docker)"
-
-# 4. 关联远程仓库 (请将 URL 替换为您刚刚创建的 GitHub 仓库地址)
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/ai-shield-pro.git
-
-# 5. 推送到 GitHub
-git push -u origin main
-```
-
----
-
-### 📄 第二部分：中英文双语 README.md 模板
-
-请将以下完整内容复制，保存为项目根目录下的 `README.md` 文件，然后再次 `git add .` 和 `git commit` 推送上去。这会让您的项目看起来极其专业！
-
 ```markdown
-# 🛡️ AI Shield Pro / AI 智能威胁检测系统
+## 🛡️ AI Shield Pro / AI 智能威胁检测系统
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
@@ -131,8 +45,6 @@ docker-compose up -d --build
 # 4. Access the API documentation
 # http://localhost:8000/docs
 ```
-
----
 
 ## 🇨🇳 中文简介
 
